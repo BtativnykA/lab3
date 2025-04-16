@@ -1,23 +1,26 @@
 #include "Dyhotomia_class.h"
 #include <cmath>
 
-// Конструктор
 Dyhotomia::Dyhotomia(double left, double right, double eps) {
     a = left;
     b = right;
     epsilon = eps;
 }
 
-// Нова функція
 double Dyhotomia::function(double x) {
-    return sqrt(3 * sin(x)) + 0.35 * x - 3.8;
+    double underRoot = 0.35 * x;
+    if (underRoot < 0) return NAN;
+    return 3 * sin(x) - sqrt(underRoot) - 3.8;
 }
 
-// Метод дихотомії
 double Dyhotomia::solve() {
     double mid;
     while ((b - a) >= epsilon) {
         mid = (a + b) / 2;
+
+        if (std::isnan(function(mid))) {
+            return NAN;  // Якщо корінь з від’ємного
+        }
 
         if (function(mid) == 0.0)
             break;

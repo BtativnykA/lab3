@@ -6,7 +6,7 @@
 int main() {
     double left = 2.0;          // ліва межа
     double right = 3.0;         // права межа
-    double epsilon = 0.000001;     // точність
+    double epsilon = 0.000001;  // точність
     double initialGuess = 2.5;  // початкове наближення для Ньютона
 
     // Метод дихотомії

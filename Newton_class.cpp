@@ -7,20 +7,17 @@ Newton::Newton(double initialGuess, double eps) {
     epsilon = eps;
 }
 
-// Нова функція
 double Newton::function(double x) {
-    return sqrt(3 * sin(x)) + 0.35 * x - 3.8;
+    double underRoot = 0.35 * x;
+    if (underRoot < 0) return NAN;
+    return 3 * sin(x) - sqrt(underRoot) - 3.8;
 }
 
-// Похідна нової функції
 double Newton::derivative(double x) {
-    double cosx = cos(x);
-    double sinx = sin(x);
+    double underRoot = 0.35 * x;
+    if (underRoot <= 0) return 0;
 
-    // похідна: (3*cos(x)) / (2*sqrt(3*sin(x))) + 0.35
-    if (sinx <= 0) return 0; // щоб не було кореня з від’ємного
-
-    return (3 * cosx) / (2 * sqrt(3 * sinx)) + 0.35;
+    return 3 * cos(x) - (0.35 * 0.5) / sqrt(underRoot);
 }
 
 double Newton::solve() {

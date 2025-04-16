@@ -8,8 +8,8 @@ private:
 
 public:
     Newton(double initialGuess, double eps);
-    double function(double x);     // нова функція f(x)
-    double derivative(double x);   // її похідна f'(x)
+    double function(double x);
+    double derivative(double x);
     double solve();
 };
 
