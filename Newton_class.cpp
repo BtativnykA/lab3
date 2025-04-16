@@ -2,23 +2,27 @@
 #include <cmath>
 #include <iostream>
 
-// Конструктор
 Newton::Newton(double initialGuess, double eps) {
     x0 = initialGuess;
     epsilon = eps;
 }
 
-// Функція f(x) = 3sin(x) - sqrt(0.35x - 3.8)
+// Нова функція
 double Newton::function(double x) {
-    return 3 * sin(x) - sqrt(0.35 * x - 3.8);
+    return sqrt(3 * sin(x)) + 0.35 * x - 3.8;
 }
 
-//Похідна f'(x) = 3cos(x) - 0.35 / (2 * sqrt(0.35x - 3.8))
+// Похідна нової функції
 double Newton::derivative(double x) {
-    return 3 * cos(x) - (0.35 / (2 * sqrt(0.35 * x - 3.8)));
+    double cosx = cos(x);
+    double sinx = sin(x);
+
+    // похідна: (3*cos(x)) / (2*sqrt(3*sin(x))) + 0.35
+    if (sinx <= 0) return 0; // щоб не було кореня з від’ємного
+
+    return (3 * cosx) / (2 * sqrt(3 * sinx)) + 0.35;
 }
 
-// Метод Ньютона
 double Newton::solve() {
     double x = x0;
     double h;
@@ -38,7 +42,7 @@ double Newton::solve() {
         iteration++;
 
         if (iteration >= maxIterations) {
-            std::cerr << "ПОМИЛКА: Метод Ньютона не зійшовся за " << maxIterations << " ітерацій.\n";
+            std::cerr << "ПОМИЛКА: Метод Ньютона не зійшовся.\n";
             return NAN;
         }
 

@@ -4,17 +4,17 @@
 #include "Newton_class.h"
 
 int main() {
-    double left = 11.0;           // Ліва межа
-    double right = 13.0;          // Права межа
-    double epsilon = 0.001;       // Точність
-    double initialGuess = 12.0;   // Старт для методу Ньютона (усередині проміжку)
+    double left = 2.0;          // ліва межа
+    double right = 3.0;         // права межа
+    double epsilon = 0.001;     // точність
+    double initialGuess = 2.5;  // початкове наближення для Ньютона
 
-    //  Метод дихотомії
+    // Метод дихотомії
     Dyhotomia method1(left, right, epsilon);
     double result1 = method1.solve();
     std::cout << "Розв'язок рівняння методом ділення навпіл: " << result1 << std::endl;
 
-    //  Метод Ньютона
+    // Метод Ньютона
     Newton method2(initialGuess, epsilon);
     double result2 = method2.solve();
 

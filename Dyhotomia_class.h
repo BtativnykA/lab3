@@ -3,14 +3,13 @@
 
 class Dyhotomia {
 private:
-    double a, b;       // межі проміжку
-    double epsilon;    // точність
+    double a, b;
+    double epsilon;
 
 public:
-    Dyhotomia(double left, double right, double eps); // конструктор
-
-    double function(double x);  // функція f(x)
-    double solve();             // метод дихотомії
+    Dyhotomia(double left, double right, double eps);
+    double function(double x);
+    double solve();
 };
 
 #endif

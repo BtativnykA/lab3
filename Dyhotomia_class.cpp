@@ -1,19 +1,19 @@
 #include "Dyhotomia_class.h"
 #include <cmath>
 
-// 🔸 Конструктор
+// Конструктор
 Dyhotomia::Dyhotomia(double left, double right, double eps) {
     a = left;
     b = right;
     epsilon = eps;
 }
 
-// 🔸 Функція f(x) = 3sin(x) - sqrt(0.35x - 3.8)
+// Нова функція
 double Dyhotomia::function(double x) {
-    return 3 * sin(x) - sqrt(0.35 * x - 3.8);
+    return sqrt(3 * sin(x)) + 0.35 * x - 3.8;
 }
 
-// 🔸 Метод дихотомії
+// Метод дихотомії
 double Dyhotomia::solve() {
     double mid;
     while ((b - a) >= epsilon) {

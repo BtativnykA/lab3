@@ -3,15 +3,14 @@
 
 class Newton {
 private:
-    double x0;        // початкове наближення
-    double epsilon;   // точність
+    double x0;
+    double epsilon;
 
 public:
-    Newton(double initialGuess, double eps);  // конструктор
-
-    double function(double x);       // функція f(x)
-    double derivative(double x);     // похідна f'(x)
-    double solve();                  // метод Ньютона для пошуку кореня
+    Newton(double initialGuess, double eps);
+    double function(double x);     // нова функція f(x)
+    double derivative(double x);   // її похідна f'(x)
+    double solve();
 };
 
 #endif
